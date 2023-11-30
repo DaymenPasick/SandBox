@@ -94,24 +94,25 @@ function accessPokemonApi() {
     })
 
 }
-accessPokemonApi()
+// accessPokemonApi()
 
 //================================================= GiphyApi
 
 var giphyApiKey = "832va7uRpJ7h6cRIeQSDqVb72uTktwtu"
 
 function accesssGiphyApi() {
-    var pokemonApiCall = "https://pokeapi.co/api/v2/"
-    fetch(pokemonApiCall)
+    var giphyApiCall = "https://api.giphy.com/v1/gifs/trending?&api_key=" + giphyApiKey;
+    fetch(giphyApiCall)
     .then(function (response){
         return response.json()
     })
     .then(function (data){
 
         // var pokemonApiData = data
-        // console.log(data)
+        console.log(data)
 
     })
 
 }
 
+accesssGiphyApi()
