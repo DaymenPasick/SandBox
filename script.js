@@ -6,8 +6,18 @@
 
 
 //=============================================== PokemonApi
+
+function findAPokemon(pokePick){
+    var pokedexNumber = "https://pokeapi.co/api/v2/pokemon/"+pokePick+"/"
+    console.log(pokedexNumber)
+
+}
+
+
+
+
 function accessPokemonApi() {
-    var pokemonApiCall = "https://pokeapi.co/api/v2/"
+    var pokemonApiCall = "https://pokeapi.co/api/v2/pokemon?&limit=151"
     fetch(pokemonApiCall)
     .then(function (response){
         return response.json()
@@ -15,8 +25,13 @@ function accessPokemonApi() {
     .then(function (data){
 
         var pokemonApiData = data
-        console.log(data)
+        console.log(pokemonApiData)
 
+
+        var pokePick = 7;
+
+
+        findAPokemon(pokePick)
 
         var pokemonTypes;
         //we can match persons favorite color to a pokemon type
@@ -40,6 +55,11 @@ function accessPokemonApi() {
         var pokeDex;
         //for search history/bar
 
+
+
+
+
+
     })
 
 }
@@ -49,7 +69,7 @@ accessPokemonApi()
 
 var giphyApiKey = "832va7uRpJ7h6cRIeQSDqVb72uTktwtu"
 
-function accessPokemonApi() {
+function accesssGiphyApi() {
     var pokemonApiCall = "https://pokeapi.co/api/v2/"
     fetch(pokemonApiCall)
     .then(function (response){
@@ -57,8 +77,8 @@ function accessPokemonApi() {
     })
     .then(function (data){
 
-        var pokemonApiData = data
-        console.log(data)
+        // var pokemonApiData = data
+        // console.log(data)
 
     })
 
