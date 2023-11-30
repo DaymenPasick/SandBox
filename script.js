@@ -11,7 +11,37 @@ function findAPokemon(pokePick){
     var pokedexNumber = "https://pokeapi.co/api/v2/pokemon/"+pokePick+"/"
     console.log(pokedexNumber)
 
+    fetch(pokedexNumber)
+    .then(function (response){
+        return response.json()
+    })
+    .then(function (data){
+
+        var comepletePokemonInfo = data;
+        console.log(comepletePokemonInfo)
+
+        var pokeName = comepletePokemonInfo.name;
+        console.log("Pokemon Name: " + pokeName)
+
+        var pokeAbilitiesArray = comepletePokemonInfo.abilities
+           function countPokeAbilities(pokeAbilitiesArray){
+            
+            for(i = 0; i < pokeAbilitiesArray.length; i++){
+                console.log("Pokemon Ability "+(i+1)+ ": " + pokeAbilitiesArray[i].ability.name)
+            }
+        }
+        countPokeAbilities(pokeAbilitiesArray)
+
+
+        var pokeType = comepletePokemonInfo.types[0].type.name;
+        console.log("Pokemon Type: " + pokeType)
+
+
+    })
+
 }
+
+
 
 
 
@@ -27,8 +57,8 @@ function accessPokemonApi() {
         var pokemonApiData = data
         console.log(pokemonApiData)
 
-
-        var pokePick = 7;
+        //this variable will be set dynamically from the pokesona quiz
+        var pokePick = 6;
 
 
         findAPokemon(pokePick)
