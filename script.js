@@ -59,7 +59,7 @@ function accessPokemonApi() {
         console.log(pokemonApiData)
 
         //this variable will be set dynamically from the pokesona quiz
-        var pokePick = 6;
+        var pokePick = 87;
 
 
         findAPokemon(pokePick)
