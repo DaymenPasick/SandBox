@@ -36,7 +36,7 @@ function findAPokemon(pokePick){
         var pokeType = comepletePokemonInfo.types[0].type.name;
         console.log("Pokemon Type: " + pokeType)
 
-
+        //testing branching request
     })
 
 }
