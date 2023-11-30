@@ -37,6 +37,7 @@ function findAPokemon(pokePick){
         console.log("Pokemon Type: " + pokeType)
 
         //testing branching request
+        var boop ="bop"
     })
 
 }
