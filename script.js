@@ -113,17 +113,17 @@ function accesssGiphyApi() {
 
 
 
-        // var pokeImg = data.data[0].images.original_still.url
-        // console.log(pokeImg)
-        // var imgLink = document.getElementById('pic');
-        // imgLink.setAttribute('src', pokeImg)
+        var pokeImg = data.data[15].images.original_still.url
+        console.log(pokeImg)
+        var imgLink = document.getElementById('pic');
+        imgLink.setAttribute('src', pokeImg)
 
 
 
 
-        var pokeGiph = data.data[0].images.original.url
+        var pokeGiph = data.data[15].images.original.url
         console.log(pokeGiph)
-        var giphLink = document.getElementById('pic');
+        var giphLink = document.getElementById('gif');
         giphLink.setAttribute('src', pokeGiph)
 
 
