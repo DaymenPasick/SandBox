@@ -1,7 +1,6 @@
 //Script
 
 //=============================================== PokemonApi
-
 function findAPokemon(pokePick){
     var pokedexNumber = "https://pokeapi.co/api/v2/pokemon/"+pokePick+"/"
     
@@ -30,10 +29,11 @@ function findAPokemon(pokePick){
                 console.log("Pokemon Ability "+(i+1)+ ": " + pokeAbilitiesArray[i].ability.name)
             }
         }
-        countPokeAbilities(pokeAbilitiesArray)   
+        countPokeAbilities(pokeAbilitiesArray)
+        buildPokemon(pokeName, pokeType, pokePick, pokeAbilitiesArray)
+
     })
 }
-
 
 
 //makes first call to pokemon API, will be used to set pokePick variable for findAPokemon()
@@ -46,15 +46,12 @@ function accessPokemonApi() {
     .then(function (data){
 
         //this variable will be set dynamically from the pokesona quiz
-        var pokePick = 2;
+        var pokePick = 123;
 
         findAPokemon(pokePick)
     })
 }
-accessPokemonApi()
-
 //========================================================== GiphyApi
-
 var giphyApiKey = "832va7uRpJ7h6cRIeQSDqVb72uTktwtu"
 
 function accesssGiphyPokemonApi(pokeName) {
@@ -72,17 +69,28 @@ function accesssGiphyPokemonApi(pokeName) {
         //giphy and call different img/gifs
 
         //Dynamically calls pokemon imgs based off pokeName passed-in variable
-        var pokeImg = data.data[10].images.original_still.url
+        var pokeImg = data.data[0].images.original_still.url
         console.log("Pokemon Img Link: " + pokeImg)
         var imgLink = document.getElementById('pic');
         imgLink.setAttribute('src', pokeImg)
 
          //Dynamically calls pokemon gifs based off pokeName passed-in variable
-        var pokeGiph = data.data[10].images.original.url
+        var pokeGiph = data.data[0].images.original.url
         console.log("Pokemon Gif Link: " + pokeGiph)
         var giphLink = document.getElementById('gif');
         giphLink.setAttribute('src', pokeGiph)
 
     }) 
+
+}
+
+
+accessPokemonApi()
+
+function buildPokemon(pokeName, pokeType, pokePick, pokeAbilitiesArray){
+    console.log(pokeName)
+    console.log(pokeType)
+    console.log(pokePick)
+    console.log(pokeAbilitiesArray)
 
 }
