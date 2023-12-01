@@ -59,7 +59,7 @@ function accessPokemonApi() {
         console.log(pokemonApiData)
 
         //this variable will be set dynamically from the pokesona quiz
-        var pokePick = 87;
+        var pokePick = 89;
 
 
         findAPokemon(pokePick)
@@ -115,4 +115,22 @@ function accesssGiphyApi() {
 
 }
 
-accesssGiphyApi()
+// accesssGiphyApi()
+
+
+function accesssBulbaApi() {
+    var bulbaApiCall = "https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Bulbasaur"
+    fetch(bulbaApiCall)
+    .then(function (response){
+        return response.json()
+    })
+    .then(function (data){
+
+        // var pokemonApiData = data
+        console.log(data)
+
+    })
+
+}
+
+accesssBulbaApi()
