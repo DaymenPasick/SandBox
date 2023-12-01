@@ -12,11 +12,13 @@ function findAPokemon(pokePick){
     .then(function (data){
         var comepletePokemonInfo = data;
         
-
         //will show pokemon name, dex#, and api return link
         var pokeName = comepletePokemonInfo.name;
         console.log("Pokemon Name: " + pokeName)
         console.log("Pokedex Number("+pokePick+"): " + pokedexNumber)
+
+        var pokeType = comepletePokemonInfo.types[0].type.name;
+        console.log("Pokemon Type: " + pokeType)
 
 
         accesssGiphyPokemonApi(pokeName)
@@ -28,10 +30,7 @@ function findAPokemon(pokePick){
                 console.log("Pokemon Ability "+(i+1)+ ": " + pokeAbilitiesArray[i].ability.name)
             }
         }
-        countPokeAbilities(pokeAbilitiesArray)
-
-        var pokeType = comepletePokemonInfo.types[0].type.name;
-        console.log("Pokemon Type: " + pokeType)
+        countPokeAbilities(pokeAbilitiesArray)   
     })
 }
 
@@ -66,7 +65,7 @@ function accesssGiphyPokemonApi(pokeName) {
     })
     .then(function (data){
 
-        // var pokeGifArray = data.data
+        var pokeGifArray = data.data
         // console.log(pokeGifArray)
 
         //Changing the data array [0] number will change the 
