@@ -1,27 +1,22 @@
 //Script
 
-//Functionality to use bulbapedia to get img back0 
-// https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Bulbasaur
-// the end point of this node, we can replace "bulbasaur" with + nameOfPokeQuizResult    some type of result variable
-
-
 //=============================================== PokemonApi
 
 function findAPokemon(pokePick){
     var pokedexNumber = "https://pokeapi.co/api/v2/pokemon/"+pokePick+"/"
-    console.log(pokedexNumber)
-
+    
     fetch(pokedexNumber)
     .then(function (response){
         return response.json()
     })
     .then(function (data){
-
         var comepletePokemonInfo = data;
-        console.log(comepletePokemonInfo)
+        
 
+        //will show pokemon name, dex#, and api return link
         var pokeName = comepletePokemonInfo.name;
         console.log("Pokemon Name: " + pokeName)
+        console.log("Pokedex Number("+pokePick+"): " + pokedexNumber)
 
 
         accesssGiphyPokemonApi(pokeName)
@@ -35,23 +30,14 @@ function findAPokemon(pokePick){
         }
         countPokeAbilities(pokeAbilitiesArray)
 
-
         var pokeType = comepletePokemonInfo.types[0].type.name;
         console.log("Pokemon Type: " + pokeType)
-
-        
-
-        //testing branching request
-        var boop ="bop"
     })
-
 }
 
 
 
-
-
-
+//makes first call to pokemon API, will be used to set pokePick variable for findAPokemon()
 function accessPokemonApi() {
     var pokemonApiCall = "https://pokeapi.co/api/v2/pokemon?&limit=151"
     fetch(pokemonApiCall)
@@ -60,44 +46,11 @@ function accessPokemonApi() {
     })
     .then(function (data){
 
-        var pokemonApiData = data
-        console.log(pokemonApiData)
-
         //this variable will be set dynamically from the pokesona quiz
         var pokePick = 2;
 
-
         findAPokemon(pokePick)
-
-        var pokemonTypes;
-        //we can match persons favorite color to a pokemon type
-        
-        var pokemonLocations;
-        // maybe, would involve alot deeper of a dive
-
-        var pokemonNature;
-
-        var pokemonBerry
-        
-
-
-        
-
-        var pokemonSprites;
-        //preferrable use Bublapedia for pokemon images
-        //show pokemon sprite
-        
-
-        var pokeDex;
-        //for search history/bar
-
-
-
-
-
-
     })
-
 }
 accessPokemonApi()
 
@@ -113,14 +66,11 @@ function accesssGiphyPokemonApi(pokeName) {
     })
     .then(function (data){
 
-        var pokeGifArray = data.data
-        console.log(pokeGifArray)
-
+        // var pokeGifArray = data.data
+        // console.log(pokeGifArray)
 
         //Changing the data array [0] number will change the 
-        // giphy and call different img/gifs
-
-
+        //giphy and call different img/gifs
 
         //Dynamically calls pokemon imgs based off pokeName passed-in variable
         var pokeImg = data.data[10].images.original_still.url
