@@ -23,6 +23,9 @@ function findAPokemon(pokePick){
         var pokeName = comepletePokemonInfo.name;
         console.log("Pokemon Name: " + pokeName)
 
+
+        accesssGiphyPokemonApi(pokeName)
+
         var pokeAbilitiesArray = comepletePokemonInfo.abilities
            function countPokeAbilities(pokeAbilitiesArray){
             
@@ -35,6 +38,8 @@ function findAPokemon(pokePick){
 
         var pokeType = comepletePokemonInfo.types[0].type.name;
         console.log("Pokemon Type: " + pokeType)
+
+        
 
         //testing branching request
         var boop ="bop"
@@ -59,7 +64,7 @@ function accessPokemonApi() {
         console.log(pokemonApiData)
 
         //this variable will be set dynamically from the pokesona quiz
-        var pokePick = 89;
+        var pokePick = 2;
 
 
         findAPokemon(pokePick)
@@ -94,80 +99,41 @@ function accessPokemonApi() {
     })
 
 }
-// accessPokemonApi()
+accessPokemonApi()
 
-//================================================= GiphyApi
+//========================================================== GiphyApi
 
 var giphyApiKey = "832va7uRpJ7h6cRIeQSDqVb72uTktwtu"
 
-function accesssGiphyApi() {
-    var giphyApiCall = "https://api.giphy.com/v1/gifs/search?&q=pokemon&api_key=" + giphyApiKey;
-    fetch(giphyApiCall)
+function accesssGiphyPokemonApi(pokeName) {
+    var giphyPokemonApiCall = "https://api.giphy.com/v1/gifs/search?&q="+pokeName+"&api_key=" + giphyApiKey;
+    fetch(giphyPokemonApiCall)
     .then(function (response){
         return response.json()
     })
     .then(function (data){
 
-        // var pokemonApiData = data
-        console.log(data)
+        var pokeGifArray = data.data
+        console.log(pokeGifArray)
+
+
+        //Changing the data array [0] number will change the 
+        // giphy and call different img/gifs
 
 
 
-        var pokeImg = data.data[15].images.original_still.url
-        console.log(pokeImg)
+        //Dynamically calls pokemon imgs based off pokeName passed-in variable
+        var pokeImg = data.data[10].images.original_still.url
+        console.log("Pokemon Img Link: " + pokeImg)
         var imgLink = document.getElementById('pic');
         imgLink.setAttribute('src', pokeImg)
 
-
-
-
-        var pokeGiph = data.data[15].images.original.url
-        console.log(pokeGiph)
+         //Dynamically calls pokemon gifs based off pokeName passed-in variable
+        var pokeGiph = data.data[10].images.original.url
+        console.log("Pokemon Gif Link: " + pokeGiph)
         var giphLink = document.getElementById('gif');
         giphLink.setAttribute('src', pokeGiph)
 
-
-
-
-
-
-    })
-
-
-   
-
-
-    // videoLink.setAttribute('src', '')
-    
+    }) 
 
 }
-
-accesssGiphyApi()
-
-
-
-
-
-
-
-
-
-
-
-
-// function accesssBulbaApi() {
-//     var bulbaApiCall = "https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Bulbasaur"
-//     fetch(bulbaApiCall)
-//     .then(function (response){
-//         return response.json()
-//     })
-//     .then(function (data){
-
-//         // var pokemonApiData = data
-//         console.log(data)
-
-//     })
-
-// }
-
-// accesssBulbaApi()
