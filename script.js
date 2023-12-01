@@ -101,7 +101,7 @@ function accessPokemonApi() {
 var giphyApiKey = "832va7uRpJ7h6cRIeQSDqVb72uTktwtu"
 
 function accesssGiphyApi() {
-    var giphyApiCall = "https://api.giphy.com/v1/gifs/trending?&api_key=" + giphyApiKey;
+    var giphyApiCall = "https://api.giphy.com/v1/gifs/search?&q=pokemon&api_key=" + giphyApiKey;
     fetch(giphyApiCall)
     .then(function (response){
         return response.json()
@@ -111,26 +111,54 @@ function accesssGiphyApi() {
         // var pokemonApiData = data
         console.log(data)
 
+
+
+        var pokeGiph = data.data[0].images.original_still.url
+        console.log(pokeGiph)
+
+
+        var videoLink = document.getElementById('pic');
+        videoLink.setAttribute('src', pokeGiph)
+
+
+
     })
+
+
+   
+
+
+    // videoLink.setAttribute('src', '')
+    
 
 }
 
-// accesssGiphyApi()
+accesssGiphyApi()
 
 
-function accesssBulbaApi() {
-    var bulbaApiCall = "https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Bulbasaur"
-    fetch(bulbaApiCall)
-    .then(function (response){
-        return response.json()
-    })
-    .then(function (data){
 
-        // var pokemonApiData = data
-        console.log(data)
 
-    })
 
-}
 
-accesssBulbaApi()
+
+
+
+
+
+
+// function accesssBulbaApi() {
+//     var bulbaApiCall = "https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Bulbasaur"
+//     fetch(bulbaApiCall)
+//     .then(function (response){
+//         return response.json()
+//     })
+//     .then(function (data){
+
+//         // var pokemonApiData = data
+//         console.log(data)
+
+//     })
+
+// }
+
+// accesssBulbaApi()
